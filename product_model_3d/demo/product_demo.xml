@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_template_office_chair_3d_demo" model="product.template">
+        <field name="name">Office Chair 3D</field>
+        <field name="type">consu</field>
+        <field
+            name="model_3d"
+            type="base64"
+            file="product_model_3d/static/demo/office_chair.glb"
+        />
+    </record>
+</odoo>

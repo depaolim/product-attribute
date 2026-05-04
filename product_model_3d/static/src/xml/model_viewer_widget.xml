@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="product_model_3d.ModelViewer3dField">
+        <div class="o_field_model_viewer_3d">
+            <t t-if="hasValue and props.record.resId">
+                <div
+                    t-if="state.loading"
+                    class="o_model_viewer_loading d-flex align-items-center gap-2"
+                >
+                    <span class="fa fa-spinner fa-spin" />
+                    <span>Loading…</span>
+                </div>
+                <div t-if="state.loadError" class="o_model_viewer_error text-danger">
+                    Could not load 3D model. The file may be corrupt.
+                </div>
+                <t t-if="!state.loadError">
+                    <div class="position-relative">
+                        <model-viewer
+                            t-ref="modelViewer"
+                            t-att-src="src"
+                            camera-controls=""
+                            t-att-auto-rotate="autoRotate"
+                            min-camera-orbit="auto auto 0deg"
+                            style="min-height: 300px; height: 40vh; width: 100%;"
+                            t-on-load="onModelLoad"
+                            t-on-error="onModelError"
+                        />
+                        <div
+                            t-if="state.showHint"
+                            class="o_model_viewer_hint position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+                            t-on-mousedown="dismissHint"
+                            t-on-touchstart="dismissHint"
+                        >
+                            <span
+                                class="badge bg-dark bg-opacity-50 text-white"
+                            >Drag to rotate · Scroll to zoom</span>
+                        </div>
+                        <button
+                            class="o_model_viewer_fullscreen position-absolute top-0 end-0 m-1 btn btn-sm btn-dark bg-opacity-50"
+                            t-on-click="toggleFullscreen"
+                            title="Full screen"
+                        >
+                            <i class="fa fa-expand" />
+                        </button>
+                    </div>
+                </t>
+                <a
+                    class="o_model_viewer_download"
+                    t-att-href="downloadSrc"
+                >Download GLB</a>
+            </t>
+            <t t-elif="conversionState === 'queued'">
+                <div class="o_model_viewer_placeholder d-flex align-items-center gap-2">
+                    <span class="fa fa-spinner fa-spin" />
+                    <span>Conversion queued…</span>
+                </div>
+            </t>
+            <t t-elif="conversionState === 'processing'">
+                <div class="o_model_viewer_placeholder d-flex align-items-center gap-2">
+                    <span class="fa fa-spinner fa-spin" />
+                    <span>Converting, please wait…</span>
+                </div>
+            </t>
+            <t t-elif="conversionState === 'failed'">
+                <div class="o_model_viewer_placeholder text-muted">
+                    <span>Conversion failed</span>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

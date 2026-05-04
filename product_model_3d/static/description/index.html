@@ -1,0 +1,620 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils: https://docutils.sourceforge.io/" />
+<title>Product 3D Model Viewer</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+Despite the name, some widely supported CSS2 features are used.
+
+See https://docutils.sourceforge.io/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: gray; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic, pre.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="product-3d-model-viewer">
+<h1 class="title">Product 3D Model Viewer</h1>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! This file is generated by oca-gen-addon-readme !!
+!! changes will be overwritten.                   !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! source digest: sha256:d8dadca368c85a0cbe5204795999464345896405b01007fac3e3008c56ef11b4
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html"><img alt="License: LGPL-3" src="https://img.shields.io/badge/licence-LGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/product-attribute/tree/18.0/product_model_3d"><img alt="OCA/product-attribute" src="https://img.shields.io/badge/github-OCA%2Fproduct--attribute-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/product-attribute-18-0/product-attribute-18-0-product_model_3d"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/product-attribute&amp;target_branch=18.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>Attach and display an interactive 3D model on product forms. Supports
+direct use of GLB/GLTF files and automatic asynchronous conversion of
+other formats (STL, OBJ, STP, STEP, …) to GLB via trimesh.</p>
+<p><strong>Table of contents</strong></p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#installation" id="toc-entry-1">Installation</a><ul>
+<li><a class="reference internal" href="#python-dependencies" id="toc-entry-2">Python dependencies</a></li>
+<li><a class="reference internal" href="#javascript-library" id="toc-entry-3">JavaScript library</a></li>
+<li><a class="reference internal" href="#odoo-modules" id="toc-entry-4">Odoo modules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration" id="toc-entry-5">Configuration</a><ul>
+<li><a class="reference internal" href="#odoo-conf-required-parameters" id="toc-entry-6"><tt class="docutils literal">odoo.conf</tt> — required parameters</a><ul>
+<li><a class="reference internal" href="#dedicated-conversion-channel" id="toc-entry-7">Dedicated conversion channel</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#system-parameters-ir-config-parameter" id="toc-entry-8">System parameters (<tt class="docutils literal">ir.config_parameter</tt>)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage" id="toc-entry-9">Usage</a><ul>
+<li><a class="reference internal" href="#uploading-a-3d-model" id="toc-entry-10">Uploading a 3D model</a></li>
+<li><a class="reference internal" href="#viewing-and-downloading" id="toc-entry-11">Viewing and downloading</a></li>
+<li><a class="reference internal" href="#conversion-states" id="toc-entry-12">Conversion states</a></li>
+<li><a class="reference internal" href="#error-handling" id="toc-entry-13">Error handling</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-14">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-15">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-16">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="toc-entry-17">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-18">Maintainers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h1><a class="toc-backref" href="#toc-entry-1">Installation</a></h1>
+<div class="section" id="python-dependencies">
+<h2><a class="toc-backref" href="#toc-entry-2">Python dependencies</a></h2>
+<p>The following Python packages must be available in the Odoo virtualenv:</p>
+<pre class="code text literal-block">
+trimesh&gt;=4.11.5
+cascadio&gt;=0.0.17
+</pre>
+<p>Install them with:</p>
+<pre class="code bash literal-block">
+pip<span class="w"> </span>install<span class="w"> </span>trimesh&gt;<span class="o">=</span><span class="m">4</span>.11.5<span class="w"> </span>cascadio&gt;<span class="o">=</span><span class="m">0</span>.0.17
+</pre>
+<p>or add them to your project’s <tt class="docutils literal">requirements.txt</tt> and run
+<tt class="docutils literal">pip install <span class="pre">-r</span> requirements.txt</tt>.</p>
+</div>
+<div class="section" id="javascript-library">
+<h2><a class="toc-backref" href="#toc-entry-3">JavaScript library</a></h2>
+<p>The module uses the <a class="reference external" href="https://modelviewer.dev/">Google model-viewer</a>
+library. A stub file is committed at <tt class="docutils literal"><span class="pre">static/lib/model-viewer.min.js</span></tt>;
+replace it with the real build before deploying:</p>
+<pre class="code bash literal-block">
+<span class="nv">MODEL_VIEWER_CDN</span><span class="o">=</span>https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js<span class="w">
+</span>curl<span class="w"> </span>-fsSL<span class="w"> </span><span class="nv">$MODEL_VIEWER_CDN</span><span class="w"> </span>-o<span class="w"> </span>addons/product_model_3d/static/lib/model-viewer.min.js
+</pre>
+</div>
+<div class="section" id="odoo-modules">
+<h2><a class="toc-backref" href="#toc-entry-4">Odoo modules</a></h2>
+<p>This module depends on:</p>
+<ul class="simple">
+<li><tt class="docutils literal">product</tt> (Odoo core)</li>
+<li><tt class="docutils literal">queue_job</tt> (OCA/queue)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="configuration">
+<h1><a class="toc-backref" href="#toc-entry-5">Configuration</a></h1>
+<div class="section" id="odoo-conf-required-parameters">
+<h2><a class="toc-backref" href="#toc-entry-6"><tt class="docutils literal">odoo.conf</tt> — required parameters</a></h2>
+<p>Asynchronous conversion relies on <tt class="docutils literal">queue_job</tt> workers. The following
+settings are <strong>mandatory</strong>:</p>
+<pre class="code ini literal-block">
+<span class="k">[options]</span><span class="w">
+</span><span class="c1"># queue_job must be listed in server_wide_modules so the job runner</span><span class="w">
+</span><span class="c1"># process starts alongside Odoo.</span><span class="w">
+</span><span class="na">server_wide_modules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">base,web,queue_job</span><span class="w">
+
+</span><span class="c1"># At least 2 workers are required: one serves HTTP requests while the</span><span class="w">
+</span><span class="c1"># other processes background jobs.  With workers=1 the job runner never</span><span class="w">
+</span><span class="c1"># gets CPU time and conversions will queue indefinitely.</span><span class="w">
+</span><span class="na">workers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+</pre>
+<div class="section" id="dedicated-conversion-channel">
+<h3><a class="toc-backref" href="#toc-entry-7">Dedicated conversion channel</a></h3>
+<p>The module creates the <tt class="docutils literal">root.model_3d_conversion</tt> queue channel
+automatically on install (<tt class="docutils literal">data/queue_job_channel_data.xml</tt>). No
+manual channel configuration is needed; the default <tt class="docutils literal">root</tt> channel
+worker count set by <tt class="docutils literal">queue_job</tt> applies.</p>
+</div>
+</div>
+<div class="section" id="system-parameters-ir-config-parameter">
+<h2><a class="toc-backref" href="#toc-entry-8">System parameters (<tt class="docutils literal">ir.config_parameter</tt>)</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="25%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Key</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">model_3d_convert.max.size.kb</tt></td>
+<td><tt class="docutils literal">51200</tt> (50 MB)</td>
+<td>Maximum allowed source
+file size in KB.
+Uploads exceeding this
+limit are rejected
+before a job is
+queued.</td>
+</tr>
+</tbody>
+</table>
+<p>Set the parameter from <em>Settings → Technical → System Parameters</em> or via
+<tt class="docutils literal">xmlrpc</tt>:</p>
+<pre class="code python literal-block">
+<span class="n">models</span><span class="o">.</span><span class="n">execute_kw</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span><span class="w">
+</span>    <span class="s1">'ir.config_parameter'</span><span class="p">,</span> <span class="s1">'set_param'</span><span class="p">,</span><span class="w">
+</span>    <span class="p">[</span><span class="s1">'model_3d_convert.max.size.kb'</span><span class="p">,</span> <span class="s1">'10240'</span><span class="p">])</span>  <span class="c1"># 10 MB</span>
+</pre>
+</div>
+</div>
+<div class="section" id="usage">
+<h1><a class="toc-backref" href="#toc-entry-9">Usage</a></h1>
+<div class="section" id="uploading-a-3d-model">
+<h2><a class="toc-backref" href="#toc-entry-10">Uploading a 3D model</a></h2>
+<ol class="arabic simple">
+<li>Open a product form and navigate to the <strong>3D Model</strong> tab.</li>
+<li>Click <strong>Choose File</strong> and select a 3D file (GLB, GLTF, STL, OBJ, STP,
+…).</li>
+<li>Click the action button:<ul>
+<li><strong>Use as 3D Model</strong> — for GLB/GLTF files (no conversion needed; the
+file is stored directly).</li>
+<li><strong>Convert to GLB</strong> — for all other formats; a <tt class="docutils literal">queue_job</tt> worker
+converts the file asynchronously via <tt class="docutils literal">trimesh</tt>.</li>
+</ul>
+</li>
+<li>While conversion is in progress the upload widget displays a
+<strong>Converting…</strong> spinner and polls the server every 3 seconds. Once
+done the 3D viewer renders automatically.</li>
+</ol>
+</div>
+<div class="section" id="viewing-and-downloading">
+<h2><a class="toc-backref" href="#toc-entry-11">Viewing and downloading</a></h2>
+<ul class="simple">
+<li>The <strong>3D Model</strong> tab renders an interactive <tt class="docutils literal"><span class="pre">&lt;model-viewer&gt;</span></tt>
+element. Use the mouse or touch to rotate, zoom, and pan.</li>
+<li>A <strong>Download</strong> link below the viewer retrieves the converted GLB file.</li>
+<li>The first time the viewer loads, a hint overlay (“Drag to rotate ·
+Scroll to zoom”) is shown; dismissing it stores the preference in
+<tt class="docutils literal">localStorage</tt> so it does not reappear.</li>
+</ul>
+</div>
+<div class="section" id="conversion-states">
+<h2><a class="toc-backref" href="#toc-entry-12">Conversion states</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">State</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">draft</tt></td>
+<td>No source file uploaded, or
+fields have been cleared.</td>
+</tr>
+<tr><td><tt class="docutils literal">queued</tt></td>
+<td>Conversion job is waiting in the
+queue.</td>
+</tr>
+<tr><td><tt class="docutils literal">processing</tt> | Worker has
+picked up the job and is
+running.</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="docutils literal">done</tt></td>
+<td>GLB available; viewer is
+rendered.</td>
+</tr>
+<tr><td><tt class="docutils literal">failed</tt></td>
+<td>Conversion error; message
+displayed in the widget.</td>
+</tr>
+</tbody>
+</table>
+<p>If the conversion fails, the error message from <tt class="docutils literal">trimesh</tt> is displayed
+directly in the upload widget. Uploading a new file or clicking
+<strong>Clear</strong> resets the state to <tt class="docutils literal">draft</tt>.</p>
+</div>
+<div class="section" id="error-handling">
+<h2><a class="toc-backref" href="#toc-entry-13">Error handling</a></h2>
+<p>Failed conversions write their state and error message in a <strong>separate
+database cursor</strong>, isolated from the <tt class="docutils literal">queue_job</tt> transaction rollback.
+This guarantees that the <tt class="docutils literal">failed</tt> state and error text are always
+visible to the user even if the worker transaction is rolled back.</p>
+</div>
+</div>
+<div class="section" id="bug-tracker">
+<h1><a class="toc-backref" href="#toc-entry-14">Bug Tracker</a></h1>
+<p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/product-attribute/issues">GitHub Issues</a>.
+In case of trouble, please check there if your issue has already been reported.
+If you spotted it first, help us to smash it by providing a detailed and welcomed
+<a class="reference external" href="https://github.com/OCA/product-attribute/issues/new?body=module:%20product_model_3d%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<p>Do not contact contributors directly about support or help with technical issues.</p>
+</div>
+<div class="section" id="credits">
+<h1><a class="toc-backref" href="#toc-entry-15">Credits</a></h1>
+<div class="section" id="authors">
+<h2><a class="toc-backref" href="#toc-entry-16">Authors</a></h2>
+<ul class="simple">
+<li>Depaolim</li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h2><a class="toc-backref" href="#toc-entry-17">Contributors</a></h2>
+<ul class="simple">
+<li>Depaolim &lt;<a class="reference external" href="mailto:depaolim&#64;gmail.com">depaolim&#64;gmail.com</a>&gt;</li>
+</ul>
+</div>
+<div class="section" id="maintainers">
+<h2><a class="toc-backref" href="#toc-entry-18">Maintainers</a></h2>
+<p>This module is maintained by the OCA.</p>
+<a class="reference external image-reference" href="https://odoo-community.org">
+<img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />
+</a>
+<p>OCA, or the Odoo Community Association, is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/product-attribute/tree/18.0/product_model_3d">OCA/product-attribute</a> project on GitHub.</p>
+<p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
+</div>
+</div>
+</div>
+</body>
+</html>

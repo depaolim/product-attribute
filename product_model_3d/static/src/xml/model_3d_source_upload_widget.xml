@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="product_model_3d.Model3dSourceUploadWidget">
+        <div class="o_field_model_3d_source_upload">
+            <div class="d-flex align-items-center gap-2">
+                <input type="file" t-ref="fileInput" t-on-change="onFileChange" />
+                <t t-if="hasFile">
+                    <button
+                        class="btn btn-sm btn-outline-danger o_model_3d_clear_btn"
+                        t-on-click="onClearClick"
+                        title="Remove all 3D content"
+                    >
+                        <span class="fa fa-trash" />
+                    </button>
+                </t>
+            </div>
+            <t t-if="hasFile">
+                <div class="o_model_3d_file_info">
+                    <span class="o_model_3d_filename" t-esc="filename" />
+                    <span class="o_model_3d_size ms-2" t-esc="formattedSize" />
+                </div>
+                <t t-if="isConverting">
+                    <div class="o_model_3d_converting d-flex align-items-center gap-2">
+                        <span class="fa fa-spinner fa-spin" />
+                        <span>Converting…</span>
+                    </div>
+                </t>
+                <t t-elif="canConvert">
+                    <button
+                        class="btn btn-primary o_model_3d_action_btn"
+                        t-on-click="onActionClick"
+                        t-esc="actionButtonLabel"
+                    />
+                </t>
+                <t t-if="conversionState === 'failed' and conversionError">
+                    <div
+                        class="o_model_3d_error text-muted small mt-1"
+                        t-esc="conversionError"
+                    />
+                </t>
+            </t>
+        </div>
+    </t>
+</templates>

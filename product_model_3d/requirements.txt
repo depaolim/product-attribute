@@ -1,0 +1,2 @@
+trimesh>=4.11.5
+cascadio>=0.0.17
